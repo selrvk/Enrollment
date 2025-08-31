@@ -1,0 +1,126 @@
+.background {
+    -fx-background-color: linear-gradient(to bottom right, #4e73df, #1cc88a);
+}
+
+.login-card {
+    -fx-padding: 40;
+    -fx-background-color: linear-gradient(to bottom right, #AD3D26, #7A2416);
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 10);
+    -fx-min-width: 350;
+}
+
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 15 0;
+}
+
+.input-field {
+    -fx-pref-width: 250;
+    -fx-pref-height: 40;
+    -fx-background-radius: 10;
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 10;
+    -fx-padding: 0 10 0 10;
+    -fx-font-size: 14px;
+}
+
+.input-field:focused {
+    -fx-border-color: #4e73df;
+    -fx-background-color: #ffffff;
+}
+
+.login-button {
+    -fx-background-color: #1C0A09;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-pref-width: 250;
+    -fx-pref-height: 40;
+    -fx-cursor: hand;
+    -fx-font-size: 20px;
+}
+
+.login-button:hover {
+    -fx-background-color: #375ac9;
+}
+
+/* Top bar */
+.top-bar {
+    -fx-background-color: linear-gradient(to right, #AD3D26, #7A2416);
+    -fx-padding: 0 20 0 20;
+    -fx-alignment: center-left;
+}
+
+.app-title {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-text-fill: #FFD700;
+}
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: #2C2C2C;
+    -fx-spacing: 15;
+    -fx-padding: 20;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f5f5f5;
+    -fx-font-size: 16px;
+    -fx-pref-width: 180;
+    -fx-alignment: center-left;
+    -fx-padding: 10 15 10 15;
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content */
+.content {
+    -fx-background-color: #F9F9F9;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 0 0 10 0;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);
+    -fx-pref-width: 350;
+    -fx-pref-height: 150;
+}
+
+.card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #AD3D26;
+}
+
