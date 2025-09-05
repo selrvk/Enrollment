@@ -4,31 +4,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.selrvk.enrollment.LoginController">
 
    <children>
-      <!-- Background -->
-      <Pane prefHeight="1080.0" prefWidth="1920.0" styleClass="background" />
 
-      <!-- Centered login card -->
+            <!-- Centered login card -->
       <VBox alignment="CENTER" spacing="20" stylesheets="@styles.css" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
 
-         <children>
+               <children>
             <VBox alignment="CENTER" maxWidth="500.0" prefWidth="500.0" spacing="15" styleClass="login-card">
                <children>
-                  <Label styleClass="title-label" text="Login" textFill="WHITE" />
-
-                  <TextField fx:id="email_input" maxWidth="300.0" promptText="School Email" styleClass="input-field" stylesheets="@styles.css" />
+                  <Label fx:id="label_login" styleClass="title-label" text="Login" textFill="WHITE" />
+      
+                              <TextField fx:id="email_input" maxWidth="300.0" promptText="School Email" styleClass="input-field" stylesheets="@styles.css" />
                   <PasswordField fx:id="password_input" maxWidth="300.0" promptText="Password" styleClass="input-field" stylesheets="@styles.css" />
-
-                  <Button fx:id="button_login" styleClass="login-button" text="Sign In" />
+      
+                              <Button fx:id="button_login" styleClass="login-button" text="Sign In" />
                </children>
             </VBox>
          </children>
       </VBox>
+      <ImageView fitHeight="159.0" fitWidth="141.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Seal_of_Lyceum_of_the_Philippines_University.svg.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

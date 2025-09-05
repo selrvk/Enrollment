@@ -2,13 +2,15 @@ package com.selrvk.enrollment;
 
 public class Student {
 
-    private int id_number;
-    private String name;
+    private int id_number = 19117823;
+    private String name = "Charles";
 
     public Student(int id_number, String name){
         this.id_number = id_number;
         this.name = name;
     }
+
+    public Student(){}
 
     public String getName() {
         return name;

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -19,6 +20,8 @@ public class LoginController {
     private TextField email_input;
     @FXML
     private TextField password_input;
+    @FXML
+    private Label label_login;
 
     public LoginController(){
 
@@ -27,11 +30,10 @@ public class LoginController {
     public void initialize(){
 
         button_login.setOnAction(e -> login());
+        System.out.println(label_login.getText());
     }
 
     public void login() {
-
-        System.out.println("BUTTON CLICKED");
 
         try{
 
