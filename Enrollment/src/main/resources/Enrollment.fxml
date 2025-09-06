@@ -94,10 +94,10 @@
                                         <!-- ⚡ Table or List of Courses -->
                                         <TableView fx:id="table_courses" prefHeight="500.0">
                                             <columns>
-                                                <TableColumn fx:id="col_code" prefWidth="150" text="Course Code" />
-                                                <TableColumn fx:id="col_name" prefWidth="350" text="Course Name" />
+                                                <TableColumn fx:id="col_code" prefWidth="238.0" text="Course Code" />
+                                                <TableColumn fx:id="col_name" prefWidth="262.0" text="Course Name" />
                                                 <TableColumn fx:id="col_units" prefWidth="100" text="Units" />
-                                                <TableColumn prefWidth="200" text="Action" />
+                                                <TableColumn fx:id="col_action" prefWidth="200" text="Action" />
                                             </columns>
                                  <VBox.margin>
                                     <Insets top="5.0" />
@@ -121,7 +121,7 @@
                                         <ListView fx:id="list_cart" prefHeight="350.0" />
 
                                         <!-- Cart Summary -->
-                                        <Label fx:id="label_totalUnits" styleClass="cart-summary" text="Total Units: 0" />
+                                        <Label fx:id="label_totalUnits" styleClass="cart-summary" text="Total Units: " />
 
                                         <!-- Checkout Button -->
                                         <Button fx:id="button_checkout" styleClass="checkout-button" text="Proceed to Checkout" />

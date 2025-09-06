@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -22,8 +20,19 @@ public class EnrollmentController {
     @FXML private TableColumn<Course, String> col_code;
     @FXML private TableColumn<Course, String> col_name;
     @FXML private TableColumn<Course, Integer> col_units;
+    @FXML private TableColumn<Course, Void> col_action;
+    @FXML private ListView<Course> list_cart;
+    @FXML private Label label_totalUnits;
 
-    public EnrollmentController(){}
+    // The list of available courses
+    private final ObservableList<Course> list_courses = FXCollections.observableArrayList();
+
+    private final Cart cart;
+
+    public EnrollmentController(){
+
+        cart = new Cart();
+    }
 
     @FXML
     public void initialize(){
@@ -34,15 +43,93 @@ public class EnrollmentController {
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_units.setCellValueFactory(new PropertyValueFactory<>("units"));
 
-        ObservableList<Course> courses = FXCollections.observableArrayList(
-                new Course("CS101", "Intro to Programming", 3),
-                new Course("MATH201", "Calculus II", 4),
-                new Course("ENG150", "Technical Writing", 2),
-                new Course("IT 123", "Course Test", 3)
+        // ADD TEST COURSES
+        list_courses.add(new Course("CS101", "Intro to Programming", 3));
+        list_courses.add(new Course("MATH201", "Calculus II", 4));
+        list_courses.add(new Course("ENG150", "Technical Writing", 2));
+        list_courses.add(new Course("IT 123", "Course Test", 3));
 
-        );
+        // Bind table courses(FX) with ObservableList
+        table_courses.setItems(list_courses);
+        // Bind list_cart(FX) with ObservableList, returned from Cart class
+        list_cart.setItems(cart.getCart());
 
-        table_courses.setItems(courses);
+        addRemoveButtonToCart();
+        addButtonToTable();
+    }
+
+    public void addToCart(Course course){
+        cart.addToCart(course);
+    }
+
+    private void addButtonToTable() {
+
+        col_action.setCellFactory(param -> new TableCell<Course, Void>() {
+
+            private final Button btn = new Button("Add to Cart");
+
+            {
+                btn.setOnAction(event -> {
+                    Course course = getTableView().getItems().get(getIndex());
+                    addToCart(course);
+                    updateTotalUnits();
+                    list_courses.remove(course);
+                    table_courses.refresh();
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btn);
+                }
+            }
+        });
+    }
+
+    public void addRemoveButtonToCart(){
+        list_cart.setCellFactory(param -> new ListCell<Course>() {
+            private final Button btnRemove = new Button("Remove");
+
+            {
+                btnRemove.setOnAction(event -> {
+                    Course course = getItem();
+                    if (course != null) {
+                        cart.removeFromCart(course);
+                        updateTotalUnits();
+                        list_courses.add(course);
+                        table_courses.refresh();
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Course course, boolean empty) {
+                super.updateItem(course, empty);
+
+                if (empty || course == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(course.getCode() + " - " + course.getName() + " (" + course.getUnits() + " units)");
+                    setGraphic(btnRemove);
+                }
+            }
+        });
+    }
+
+    public void updateTotalUnits(){
+
+        int totalUnits = 0;
+
+        for(Course c : cart.getCart()){
+            totalUnits += c.getUnits();
+        }
+
+        label_totalUnits.setText("Total Units: " + totalUnits);
     }
 
     public void home(){
@@ -60,4 +147,6 @@ public class EnrollmentController {
             throw new RuntimeException(e);
         }
     }
+
+
 }

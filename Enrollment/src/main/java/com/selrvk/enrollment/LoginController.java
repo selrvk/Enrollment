@@ -14,14 +14,10 @@ import java.util.Objects;
 
 public class LoginController {
 
-    @FXML
-    private Button button_login;
-    @FXML
-    private TextField email_input;
-    @FXML
-    private TextField password_input;
-    @FXML
-    private Label label_login;
+    @FXML private Button button_login;
+    @FXML private TextField email_input;
+    @FXML private TextField password_input;
+    @FXML private Label label_login;
 
     public LoginController(){
 

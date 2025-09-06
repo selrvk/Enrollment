@@ -2,17 +2,16 @@ package com.selrvk.enrollment;
 
 public class Course {
 
-    private String courseCode = "IT 123";
-    private String name = "Course Name";
-
-    private int units = 3;
+    private String code;
+    private String name;
+    private int units;
     private int slots;
 
     public Course(){
     }
 
-    public Course(String courseCode, String name, int units){
-        this.courseCode = courseCode;
+    public Course(String code, String name, int units){
+        this.code = code;
         this.units = units;
         this.name = name;
     }
@@ -42,11 +41,9 @@ public class Course {
         this.units = units;
     }
 
-    public String getCourseCode() {
-        return courseCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
-    }
+    public void setCourseCode(String code) { this.code = code; }
 }
