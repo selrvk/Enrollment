@@ -58,12 +58,12 @@
                                 <Insets left="20.0" top="20.0" />
                             </VBox.margin>
                         </Label>
-                  <CheckBox mnemonicParsing="false" text="Are you a regular student?">
+                  <CheckBox fx:id="checkBox_regularStudent" mnemonicParsing="false" text="Are you a regular student?">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <Label text="Enter section:">
+                  <Label fx:id="label_enterSection" disable="true" text="Enter section:">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
@@ -71,11 +71,16 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField maxWidth="150.0">
+                  <TextField fx:id="textField_enterSection" disable="true" maxWidth="150.0">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
                   </TextField>
+                  <Button fx:id="button_loadCourses" disable="true" mnemonicParsing="false" text="Load Courses">
+                     <VBox.margin>
+                        <Insets left="50.0" top="-5.0" />
+                     </VBox.margin>
+                  </Button>
 
                         <!-- Enrollment Layout (Like Shopping) -->
                         <HBox alignment="TOP_CENTER" spacing="30">
@@ -90,7 +95,10 @@
                                  </font>
                                  <padding>
                                     <Insets bottom="-10.0" />
-                                 </padding></Label>
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin></Label>
                                         <!-- ⚡ Table or List of Courses -->
                                         <TableView fx:id="table_courses" prefHeight="500.0">
                                             <columns>

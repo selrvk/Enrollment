@@ -15,6 +15,7 @@ import java.util.Objects;
 
 public class EnrollmentController {
 
+    @FXML private CheckBox checkBox_regularStudent;
     @FXML private Button button_home;
     @FXML private TableView<Course> table_courses;
     @FXML private TableColumn<Course, String> col_code;
@@ -23,10 +24,14 @@ public class EnrollmentController {
     @FXML private TableColumn<Course, Void> col_action;
     @FXML private ListView<Course> list_cart;
     @FXML private Label label_totalUnits;
+    @FXML private Label label_enterSection;
+    @FXML private TextField textField_enterSection;
+    @FXML private Button button_loadCourses;
 
     // The list of available courses
     private final ObservableList<Course> list_courses = FXCollections.observableArrayList();
 
+    // Initialize instance of cart
     private final Cart cart;
 
     public EnrollmentController(){
@@ -38,6 +43,11 @@ public class EnrollmentController {
     public void initialize(){
 
         button_home.setOnAction(e -> home());
+
+        label_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
+        textField_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
+        button_loadCourses.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
+
 
         col_code.setCellValueFactory(new PropertyValueFactory<>("code"));
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
