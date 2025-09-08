@@ -43,7 +43,6 @@ public class EnrollmentController {
     public void initialize(){
 
         button_home.setOnAction(e -> home());
-
         label_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
         textField_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
         button_loadCourses.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
