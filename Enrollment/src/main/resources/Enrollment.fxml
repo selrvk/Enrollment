@@ -76,7 +76,7 @@
                         <Insets left="50.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="button_loadCourses" disable="true" mnemonicParsing="false" text="Load Courses">
+                  <Button fx:id="button_loadCourses" disable="true" mnemonicParsing="false" text="Load Courses to Cart">
                      <VBox.margin>
                         <Insets left="50.0" top="-5.0" />
                      </VBox.margin>

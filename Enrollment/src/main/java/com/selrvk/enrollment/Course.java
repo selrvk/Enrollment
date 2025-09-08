@@ -1,11 +1,14 @@
 package com.selrvk.enrollment;
 
+import java.util.ArrayList;
+
 public class Course {
 
     private String code;
     private String name;
     private int units;
     private int slots;
+    private ArrayList<Student> students_enrolled = new ArrayList<>();
 
     public Course(){
     }

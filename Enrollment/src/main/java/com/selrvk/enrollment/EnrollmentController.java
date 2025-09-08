@@ -29,7 +29,7 @@ public class EnrollmentController {
     @FXML private Button button_loadCourses;
 
     // The list of available courses
-    private final ObservableList<Course> list_courses = FXCollections.observableArrayList();
+    private ObservableList<Course> list_courses = FXCollections.observableArrayList();
 
     // Initialize instance of cart
     private final Cart cart;
@@ -42,21 +42,22 @@ public class EnrollmentController {
     @FXML
     public void initialize(){
 
+        Semester sem1 = new Semester("1yr_1sem");
+
         button_home.setOnAction(e -> home());
+        button_loadCourses.setOnAction(e -> loadCourses(sem1));
+
+
         label_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
         textField_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
         button_loadCourses.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
-
 
         col_code.setCellValueFactory(new PropertyValueFactory<>("code"));
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_units.setCellValueFactory(new PropertyValueFactory<>("units"));
 
         // ADD TEST COURSES
-        list_courses.add(new Course("CS101", "Intro to Programming", 3));
-        list_courses.add(new Course("MATH201", "Calculus II", 4));
-        list_courses.add(new Course("ENG150", "Technical Writing", 2));
-        list_courses.add(new Course("IT 123", "Course Test", 3));
+        list_courses = FXCollections.observableArrayList(sem1.getSemester_courses());
 
         // Bind table courses(FX) with ObservableList
         table_courses.setItems(list_courses);
@@ -97,6 +98,17 @@ public class EnrollmentController {
                 }
             }
         });
+    }
+
+    public void loadCourses(Semester sem){
+        for(Course c : sem.getSemester_courses()){
+            if(!cart.getCart().contains(c)){
+                addToCart(c);
+                list_courses.remove(c);
+            }
+        }
+
+        updateTotalUnits();
     }
 
     public void addRemoveButtonToCart(){
