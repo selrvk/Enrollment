@@ -13,21 +13,14 @@ import java.util.Objects;
 
 public class DashboardController {
 
-    @FXML
-    private Label label_welcomeBack;
-    @FXML
-    private Button button_enrollment;
-    @FXML
-    private Button button_grades;
-    @FXML
-    private Button button_settings;
+    @FXML private Label label_welcomeBack;
+    @FXML private Button button_enrollment;
+    @FXML private Button button_grades;
+    @FXML private Button button_settings;
 
-
-    public DashboardController(){}
+    private Student student;
 
     public void initialize(){
-
-        Student student = new Student();
 
         label_welcomeBack.setText(label_welcomeBack.getText() + " " + student.getName() + "!");
 
@@ -84,5 +77,11 @@ public class DashboardController {
         }
     }
 
+    public Student getStudent(){
+        return this.student;
+    }
 
+    public void setStudent(Student student){
+        this.student = student;
+    }
 }

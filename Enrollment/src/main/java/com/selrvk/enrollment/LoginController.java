@@ -19,9 +19,8 @@ public class LoginController {
     @FXML private TextField password_input;
     @FXML private Label label_login;
 
-    public LoginController(){
-
-    }
+    private final Student student = new Student();
+    private final DashboardController dashboardController = new DashboardController();
 
     public void initialize(){
 
@@ -30,9 +29,9 @@ public class LoginController {
     }
 
     public void login() {
-
         try{
 
+            dashboardController.setStudent(student);
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Dashboard.fxml")));
             Stage stage = (Stage) button_login.getScene().getWindow();
             stage.setTitle("Main Dashboard");
