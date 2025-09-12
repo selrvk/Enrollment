@@ -19,9 +19,11 @@ public class DashboardController {
     @FXML private Button button_settings;
 
     private static Student student;
+    private static final EnrollmentController ec = new EnrollmentController();
 
     public void initialize(){
 
+        ec.setStudent(student);
         label_welcomeBack.setText(label_welcomeBack.getText() + " " + student.getName() + "!");
 
         button_enrollment.setOnAction(e -> enrollment());

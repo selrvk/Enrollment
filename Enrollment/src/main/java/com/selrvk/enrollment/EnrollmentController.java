@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.Year;
 import java.util.Objects;
 
 public class EnrollmentController {
@@ -27,6 +28,10 @@ public class EnrollmentController {
     @FXML private Label label_enterSection;
     @FXML private TextField textField_enterSection;
     @FXML private Button button_loadCourses;
+    @FXML private Label label_sysemester;
+
+    // Student
+    private static Student student;
 
     // The list of available courses
     private ObservableList<Course> list_courses = FXCollections.observableArrayList();
@@ -34,19 +39,29 @@ public class EnrollmentController {
     // Initialize instance of cart
     private final Cart cart;
 
+    /*      CHANGE THESE TO TEST       */
+    private static String yrsem_id = "";
+
+    private static String string_year_sem;
+
     public EnrollmentController(){
 
-        cart = new Cart();
+        this.cart = new Cart();
     }
 
     @FXML
     public void initialize(){
 
-        Semester sem1 = new Semester("1yr_1sem");
+        int year = Year.now().getValue();
+        int current_sem = 1;
+
+        set_yrsem_id(student.getYear(), current_sem);
+        set_sem_string(year, current_sem);
+        Semester sem1 = new Semester(yrsem_id);
+
 
         button_home.setOnAction(e -> home());
         button_loadCourses.setOnAction(e -> loadCourses(sem1));
-
 
         label_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
         textField_enterSection.disableProperty().bind(checkBox_regularStudent.selectedProperty().not());
@@ -64,8 +79,14 @@ public class EnrollmentController {
         // Bind list_cart(FX) with ObservableList, returned from Cart class
         list_cart.setItems(cart.getCart());
 
+        label_sysemester.setText(string_year_sem);
         addRemoveButtonToCart();
         addButtonToTable();
+
+        System.out.println("Your current year: " + student.getYear());
+        System.out.println("Current year: " + year);
+        System.out.println("Current sem: " + current_sem);
+        System.out.println("Sem ID: " + yrsem_id);
     }
 
     public void addToCart(Course course){
@@ -169,5 +190,16 @@ public class EnrollmentController {
         }
     }
 
+    public void set_yrsem_id(int year, int currSem){
+        yrsem_id = year + "yr_" + currSem + "sem";
+    }
 
+    public void set_sem_string(int year, int currSem){
+
+        string_year_sem = "S.Y. " + year % 100 + " - " + ((year % 100) + 1) + "  " + currSem + " Semester";
+    }
+
+    public void setStudent(Student student){
+        EnrollmentController.student = student;
+    }
 }

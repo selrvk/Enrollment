@@ -28,7 +28,7 @@
                         <Image url="@Seal_of_Lyceum_of_the_Philippines_University.svg.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="30.0" prefHeight="26.0" prefWidth="209.0" styleClass="app-title" text="LPU Enrollment System">
+                <Label layoutX="30.0" prefHeight="30.0" prefWidth="234.0" styleClass="app-title" text="LPU Enrollment System">
                     <HBox.margin>
                         <Insets left="20.0" />
                     </HBox.margin>
@@ -62,6 +62,9 @@
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </CheckBox>
                   <Label fx:id="label_enterSection" disable="true" text="Enter section:">
                      <VBox.margin>
@@ -81,6 +84,14 @@
                         <Insets left="50.0" top="-5.0" />
                      </VBox.margin>
                   </Button>
+                  <Label fx:id="label_sysemester" alignment="CENTER" prefHeight="27.0" prefWidth="302.0">
+                     <font>
+                        <Font name="Yu Gothic Light" size="23.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="700.0" />
+                     </VBox.margin>
+                  </Label>
 
                         <!-- Enrollment Layout (Like Shopping) -->
                         <HBox alignment="TOP_CENTER" spacing="30">
@@ -100,12 +111,13 @@
                                     <Insets top="10.0" />
                                  </VBox.margin></Label>
                                         <!-- ⚡ Table or List of Courses -->
-                                        <TableView fx:id="table_courses" prefHeight="500.0">
+                                        <TableView fx:id="table_courses" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="876.0">
                                             <columns>
-                                                <TableColumn fx:id="col_code" prefWidth="238.0" text="Course Code" />
-                                                <TableColumn fx:id="col_name" prefWidth="262.0" text="Course Name" />
-                                                <TableColumn fx:id="col_units" prefWidth="100" text="Units" />
-                                                <TableColumn fx:id="col_action" prefWidth="200" text="Action" />
+                                                <TableColumn fx:id="col_code" prefWidth="196.0" text="Course Code" />
+                                                <TableColumn fx:id="col_name" prefWidth="304.0" text="Course Name" />
+                                    <TableColumn prefWidth="121.0" text="Section" />
+                                                <TableColumn fx:id="col_units" prefWidth="93.0" text="Units" />
+                                                <TableColumn fx:id="col_action" prefWidth="161.0" text="Add to Cart" />
                                             </columns>
                                  <VBox.margin>
                                     <Insets top="5.0" />
@@ -118,22 +130,37 @@
                                 </VBox>
 
                                 <!-- RIGHT: Cart & Checkout -->
-                                <VBox prefWidth="500.0" spacing="20.0" styleClass="cart-section">
+                                <VBox prefHeight="728.0" prefWidth="500.0" spacing="15.0" styleClass="cart-section">
                                     <children>
                                         <Label styleClass="section-title" text="Your Course Cart (Selected Courses)">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font></Label>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="-10.0" />
+                                 </padding></Label>
 
                                         <!-- ⚡ Cart area -->
-                                        <ListView fx:id="list_cart" prefHeight="350.0" />
+                                        <ListView fx:id="list_cart" prefHeight="350.0">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin></ListView>
 
                                         <!-- Cart Summary -->
-                                        <Label fx:id="label_totalUnits" styleClass="cart-summary" text="Total Units: " />
+                                        <Label fx:id="label_totalUnits" styleClass="cart-summary" text="Total Units: ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
 
                                         <!-- Checkout Button -->
                                         <Button fx:id="button_checkout" styleClass="checkout-button" text="Proceed to Checkout" />
                                     </children>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
                                 </VBox>
                             </children>
                         </HBox>
