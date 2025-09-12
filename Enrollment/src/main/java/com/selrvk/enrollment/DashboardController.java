@@ -18,7 +18,7 @@ public class DashboardController {
     @FXML private Button button_grades;
     @FXML private Button button_settings;
 
-    private Student student;
+    private static Student student;
 
     public void initialize(){
 
